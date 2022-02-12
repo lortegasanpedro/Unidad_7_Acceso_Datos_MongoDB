@@ -25,7 +25,7 @@ public class Categoria {
 	@JoinColumn (name="txuleta_id")
 	List<Txuleta> txuletas = new ArrayList<>();
 	
-	@Enumerated(EnumType.ORDINAL)
+	@Enumerated(EnumType.STRING)
 	private EnumCategorias categoria;
 	
 	@Column
@@ -33,5 +33,45 @@ public class Categoria {
 	
 	@Column
 	private Date fechaMod;
-	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public List<Txuleta> getTxuletas() {
+		return txuletas;
+	}
+
+	public void setTxuletas(List<Txuleta> txuletas) {
+		this.txuletas = txuletas;
+	}
+
+	public EnumCategorias getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(EnumCategorias categoria) {
+		this.categoria = categoria;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public Date getFechaMod() {
+		return fechaMod;
+	}
+
+	public void setFechaMod(Date fechaMod) {
+		this.fechaMod = fechaMod;
+	}
+		
 }

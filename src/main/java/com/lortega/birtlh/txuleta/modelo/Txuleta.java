@@ -19,7 +19,7 @@ public class Txuleta {
 	
 	@ManyToOne
 	@JoinColumn (name="categoria_id")
-	private Categoria categorias;
+	private Categoria categoria;
 		
 	@Column
 	private String descripcion;
@@ -150,6 +150,12 @@ public class Txuleta {
 		this.fechaMod = fechaMod;
 	}
 
-	
-	
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
 }
