@@ -73,7 +73,8 @@ public class TxuletaControlador {
 	public String addNuevaTxueletaURL(@ModelAttribute Txuleta txuleta, @ModelAttribute Categoria categoria) {
 		txuleta.setFechaMod(new Date());
 		//categoriaRepositorio.findByCategoria(EnumCategorias.RUTAS_CARPETAS);
-		txuleta.setCategoria(categoriaRepositorio.findByCategoriaDesc(categoria.getCategoriaDesc()));
+		String cate = categoria.getCategoriaDesc();
+		txuleta.setCategoria(categoriaRepositorio.findByCategoriaDesc("SERVICIOS_SOA"));
 		//txuleta.setCategoria(categoria);
 		txuletaRepositorio.save(txuleta);
 		return "redirect:/txuletasAll";
