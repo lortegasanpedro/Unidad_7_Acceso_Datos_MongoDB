@@ -5,10 +5,10 @@
 <title>NavBar</title>
 </head>
 <body>
- <div th:fragment="navbar">
+	<div th:fragment="navbar">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="/txuletasAll">Home</a>
+				<a class="navbar-brand" href="/txuletasAll">Inicio</a>
 				<button class="navbar-toggler" type="button"
 					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 					aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -17,16 +17,19 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li class="nav-item"><a th:attr="class=${opcionMenu eq 'C' ? 'nav-link active' : 'nav-link'}"
+						<li class="nav-item"><a
+							th:attr="class=${opcionMenu eq 'C' ? 'nav-link active' : 'nav-link'}"
 							aria-current="page" href="/categoriasAll">Categorías</a></li>
-						<li class="nav-item"><a th:attr="class=${opcionMenu eq 'T' ? 'nav-link active' : 'nav-link'}" href="/txuletasAll">Txuletas</a></li>
+						<li class="nav-item"><a
+							th:attr="class=${opcionMenu eq 'T' ? 'nav-link active' : 'nav-link'}"
+							href="/txuletasAll">Txuletas</a></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								Nueva Txuleta </a>
+								Crear</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="/txuletaNewURL">URL</a></li>
-								<li><a class="dropdown-item" href="/txuletaNewCarpeta">Carpeta</a></li>
+								<li><a class="dropdown-item" href="/categoriaNew">Categoria</a></li>
+								<li><a class="dropdown-item" href="/txuletaNewForm">Txuleta</a></li>
 								<li><hr class="dropdown-divider"></li>
 								<li><a class="dropdown-item" href="#">Something else
 										here</a></li>
@@ -42,7 +45,7 @@
 				</div>
 			</div>
 		</nav>
- </div>
+	</div>
 
 </body>
 </html>

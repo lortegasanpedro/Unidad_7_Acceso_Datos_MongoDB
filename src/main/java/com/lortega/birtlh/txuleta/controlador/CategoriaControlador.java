@@ -33,7 +33,6 @@ public class CategoriaControlador {
 		return "txuleta/categoria";
 	}
 	
-
 	@GetMapping ("/categoriaNew")
 	public String initNuevaCategoria(Model modelo) {
 		Categoria categoria= new Categoria();

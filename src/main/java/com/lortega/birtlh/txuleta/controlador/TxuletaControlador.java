@@ -42,40 +42,44 @@ public class TxuletaControlador {
 	}
 
 	
-	@GetMapping ("/txuletaEditURL/{id}")
+	@GetMapping ("/txuletaEdit/{id}")
 	public String initEditarTxuletaURL(@PathVariable("id") int id, Model modelo) {
 		Optional<Txuleta> txuleta = txuletaRepositorio.findById(id);
+		List<Categoria> listCategorias = categoriaRepositorio.findAll();
+		modelo.addAttribute("allCategorias", listCategorias);
 		modelo.addAttribute("txuleta", txuleta);
 		modelo.addAttribute("opcionMenu","");
-		return "txuleta/txuletaFormURL";
+		return "txuleta/txuletaNewForm";
 	}
 	
-	@GetMapping ("/txuletaNewURL")
+	/*@GetMapping ("/txuletaNewURL")
 	public String initNuevaTxuletaURL(Model modelo) {
 		Txuleta txuleta = new Txuleta();
 		modelo.addAttribute("txuleta", txuleta);		
 		modelo.addAttribute("opcionMenu","");
 		return "txuleta/txuletaFormURL";
-	}
+	}*/
 
-	@GetMapping ("/txuletaNewCarpeta")
-	public String initNuevaTxuletaCarpeta(Model modelo) {
+	@GetMapping ("/txuletaNewForm")
+	public String initNuevaTxuleta(Model modelo) {
 		Txuleta txuleta = new Txuleta();
 		List<Categoria> listCategorias = categoriaRepositorio.findAll();
 		modelo.addAttribute("txuleta", txuleta);
 		modelo.addAttribute("allCategorias", listCategorias);
 		modelo.addAttribute("opcionMenu","");
-		return "txuleta/txuletaFormCarpeta";
+		return "txuleta/txuletaNewForm";
 	}
 	
 
 	@PostMapping ("txuleta/new/submit")
-	public String addNuevaTxueletaURL(@ModelAttribute Txuleta txuleta, @ModelAttribute Categoria categoria) {
+	public String addNuevaTxueleta(@ModelAttribute Txuleta txuleta, @ModelAttribute Categoria categoria) {
 		txuleta.setFechaMod(new Date());
 		//categoriaRepositorio.findByCategoria(EnumCategorias.RUTAS_CARPETAS);
-		String cate = categoria.getCategoriaDesc();
-		txuleta.setCategoria(categoriaRepositorio.findByCategoriaDesc("SERVICIOS_SOA"));
-		//txuleta.setCategoria(categoria);
+		
+		//txuleta.setCategoria(categoriaRepositorio.findByCategoriaDesc("RUTAS_CARPETAS"));
+		//String cate = categoria.getCategoriaDesc();
+		//txuleta.setCategoria(categoriaRepositorio.findByCategoriaDesc("SERVICIOS_SOA"));
+		txuleta.setCategoria(categoria);
 		txuletaRepositorio.save(txuleta);
 		return "redirect:/txuletasAll";
 	}

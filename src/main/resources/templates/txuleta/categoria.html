@@ -20,16 +20,16 @@
 			</thead>
 			<tbody>
 				<tr th:each="categoria : ${allCategorias}">
-					<th scope="row" th:text="${categoria.id}"></th>
+					<th scope="row" th:text="${categoria.idCategoria}"></th>
 					<td th:text="${categoria.categoriaDesc}"></td>
 					<td th:text="${categoria.descripcion}"></td>
 					<td th:text="${categoria.fechaMod}"></td>
 					<td>
-						 <a class="text-decoration-none" th:href="@{categoriaEdit/{id}(id=${categoria.id})}"> 
+						 <a class="text-decoration-none" th:href="@{categoriaEdit/{id}(id=${categoria.idCategoria})}"> 
 							<i class="bi bi-pencil-fill" style="font-size: 1rem; color: cornflowerblue;"></i>
 						 </a> 
 							&nbsp;
-						 <a class="text-decoration-none" th:href="@{categoriaDelete/{id}(id=${categoria.id})}"> 
+						 <a class="text-decoration-none" th:href="@{categoriaDelete/{id}(id=${categoria.idCategoria})}"> 
 							<i class="bi bi-x-circle-fill" style="font-size: 1rem; color: #be0032;"></i>
 						</a>
 					</td>

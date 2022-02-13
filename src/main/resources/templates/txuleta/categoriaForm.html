@@ -9,7 +9,7 @@
 		<h1>Editar Categoría</h1>
 
 		<form method="post" action="#" th:action="@{/categoria/new/submit}" th:object="${categoria}">
-			<input type="hidden" th:field="*{id}" id="id">
+			<input type="hidden" th:field="*{idCategoria}" id="id">
 			<div class="mb-3">
 				<label for="categoriaDesc" class="form-label">Categoría</label> 
 					 <input type="text" class="form-control" th:field="*{categoriaDesc}"
@@ -27,7 +27,6 @@
 	</div>
 
 	<div th:replace="fragmentos/footer ::footer"></div>
-
 
 </body>
 </html>

@@ -9,13 +9,13 @@
 		<h1><span th:text="${id} ? 'Edit' : 'Nueva'"></span> Txuleta Carpeta</h1>
 
 		<form method="post" action="#" th:action="@{/txuleta/new/submit}" th:object="${txuleta}">
-			<input type="hidden" th:field="*{id}" id="id">
+  		    <input type="hidden" th:field="*{id}" name="id">
 			<!-- Categoria -->
 			<div class="mb-3">
 				<label for="categorias" class="form-label">Selecciona categoría</label> 
 				<select th:field="*{categoria}"  class="form-select" aria-label="Default select example" id="categorias">
   					<option selected value="">Categorías</option>
-  					<option th:each="categoria : ${allCategorias}"  th:text="${categoria.categoriaDesc}"   th:value="${categoria.id}"></option>
+  					<option th:each="categoria : ${allCategorias}" th:text="${categoria.categoriaDesc}" th:value="${categoria.idCategoria}"></option>
 			</select>
 			</div>
 			<!-- Descripcion -->
@@ -69,13 +69,24 @@
 					<input type="text" class="form-control" th:field="*{mail}" id="mail">
 			</div>
 
-			<button type="submit" class="btn btn-primary">Guardar</button>
+			<button type="submit" class="btn btn-primary" disabled="disabled" id="btnSubmit">Guardar</button>
 		</form>
 
 	</div>
 
 	<div th:replace="fragmentos/footer ::footer"></div>
-
+	<script type="text/javascript">
+		const selectElement = document.getElementById('categorias');
+		const btnSubmitSave = document.getElementById('btnSubmit');
+		selectElement.addEventListener('change', (event) => {    
+			//console.log(event.target.value);
+			if (event.target.value==='') {
+				btnSubmitSave.disabled = true;
+			} else {
+				btnSubmitSave.disabled = false;
+			}
+		});
+	</script>
 
 </body>
 </html>

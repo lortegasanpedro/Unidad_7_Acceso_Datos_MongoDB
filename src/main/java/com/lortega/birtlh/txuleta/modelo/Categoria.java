@@ -6,8 +6,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,7 +17,7 @@ public class Categoria {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private int idCategoria;
 	
 	@OneToMany
 	@JoinColumn (name="txuleta_id")
@@ -37,12 +35,12 @@ public class Categoria {
 	@Column
 	private Date fechaMod;
 
-	public int getId() {
-		return id;
+	public int getIdCategoria() {
+		return idCategoria;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setIdCategoria(int idCategoria) {
+		this.idCategoria = idCategoria;
 	}
 
 	public List<Txuleta> getTxuletas() {
