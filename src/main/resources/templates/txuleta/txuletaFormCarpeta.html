@@ -10,14 +10,65 @@
 
 		<form method="post" action="#" th:action="@{/txuleta/new/submit}" th:object="${txuleta}">
 			<input type="hidden" th:field="*{id}" id="id">
+			<!-- Categoria -->
 			<div class="mb-3">
-				<label for="rutaCarpeta" class="form-label">Ruta carpeta</label> 
-					<input type="text" class="form-control" th:field="*{rutaCarpeta}" id="rutaCarpeta">
+				<label for="categorias" class="form-label">Selecciona categoría</label> 
+				<select th:field="*{categoria}"  class="form-select" aria-label="Default select example" id="categorias">
+  					<option selected value="">Categorías</option>
+  					<option th:each="categoria : ${allCategorias}"  th:text="${categoria.categoriaDesc}"   th:value="${categoria.id}"></option>
+			</select>
 			</div>
+			<!-- Descripcion -->
 			<div class="mb-3">
 				<label for="descripcion" class="form-label">Descripción</label>
 				<input type="text" class="form-control" th:field="*{descripcion}" id="descripcion">
 			</div>
+			<!-- Aplicacion -->
+			<div class="mb-3">
+				<label for="aplicacion" class="form-label">Aplicación</label> 
+					<input type="text" class="form-control" th:field="*{aplicacion}" id="aplicacion">
+			</div>
+			<!-- Servidor -->
+			<div class="mb-3">
+				<label for="maquina" class="form-label">Servidor</label> 
+					<input type="text" class="form-control" th:field="*{maquina}" id="maquina">
+			</div>
+			<!-- URL -->
+			<div class="mb-3">
+				<label for="url" class="form-label">Url</label> 
+					<input type="text" class="form-control" th:field="*{url}" id="url">
+			</div>
+			<!-- Ruta Carpeta  -->
+			<div class="mb-3">
+				<label for="rutaCarpeta" class="form-label">Ruta carpeta</label> 
+					<input type="text" class="form-control" th:field="*{rutaCarpeta}" id="rutaCarpeta">
+			</div>			
+			<!-- Nombre  -->
+			<div class="mb-3">
+				<label for="nombre" class="form-label">Nombre</label> 
+					<input type="text" class="form-control" th:field="*{nombre}" id="nombre">
+			</div>
+			<!-- Apellidos  -->
+			<div class="mb-3">
+				<label for="apellidos" class="form-label">Apellidos</label> 
+					<input type="text" class="form-control" th:field="*{apellidos}" id="apellidos">
+			</div>
+			<!-- Usuario  -->
+			<div class="mb-3">
+				<label for="usuario" class="form-label">Usuario</label> 
+					<input type="text" class="form-control" th:field="*{usuario}" id="usuario">
+			</div>
+			<!-- Clave  -->
+			<div class="mb-3">
+				<label for="clave" class="form-label">Clave</label> 
+					<input type="text" class="form-control" th:field="*{clave}" id="clave">
+			</div>
+			<!-- Mail -->
+			<div class="mb-3">
+				<label for="mail" class="form-label">Mail</label> 
+					<input type="text" class="form-control" th:field="*{mail}" id="mail">
+			</div>
+
 			<button type="submit" class="btn btn-primary">Guardar</button>
 		</form>
 

@@ -1,6 +1,7 @@
 package com.lortega.birtlh.txuleta.controlador;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.lortega.birtlh.txuleta.modelo.EnumCategorias;
+import com.lortega.birtlh.txuleta.modelo.Categoria;
 import com.lortega.birtlh.txuleta.modelo.Txuleta;
 import com.lortega.birtlh.txuleta.repositorios.CategoriaRepositorio;
 import com.lortega.birtlh.txuleta.repositorios.TxuletaRepositorio;
@@ -60,17 +61,20 @@ public class TxuletaControlador {
 	@GetMapping ("/txuletaNewCarpeta")
 	public String initNuevaTxuletaCarpeta(Model modelo) {
 		Txuleta txuleta = new Txuleta();
-		modelo.addAttribute("txuleta", txuleta);		
+		List<Categoria> listCategorias = categoriaRepositorio.findAll();
+		modelo.addAttribute("txuleta", txuleta);
+		modelo.addAttribute("allCategorias", listCategorias);
 		modelo.addAttribute("opcionMenu","");
 		return "txuleta/txuletaFormCarpeta";
 	}
 	
 
 	@PostMapping ("txuleta/new/submit")
-	public String addNuevaTxueletaURL(@ModelAttribute Txuleta txuleta) {
+	public String addNuevaTxueletaURL(@ModelAttribute Txuleta txuleta, @ModelAttribute Categoria categoria) {
 		txuleta.setFechaMod(new Date());
 		//categoriaRepositorio.findByCategoria(EnumCategorias.RUTAS_CARPETAS);
-		txuleta.setCategoria(categoriaRepositorio.findByCategoriaDesc("RUTAS_CARPETAS"));
+		txuleta.setCategoria(categoriaRepositorio.findByCategoriaDesc(categoria.getCategoriaDesc()));
+		//txuleta.setCategoria(categoria);
 		txuletaRepositorio.save(txuleta);
 		return "redirect:/txuletasAll";
 	}
