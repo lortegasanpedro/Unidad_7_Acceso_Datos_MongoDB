@@ -1,6 +1,5 @@
 package com.lortega.birtlh.txuleta.bootstrap;
 
-import java.time.LocalTime;
 import java.util.Date;
 
 import javax.transaction.Transactional;
@@ -12,7 +11,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import com.lortega.birtlh.txuleta.modelo.Categoria;
-import com.lortega.birtlh.txuleta.modelo.EnumCategorias;
 import com.lortega.birtlh.txuleta.modelo.Txuleta;
 import com.lortega.birtlh.txuleta.repositorios.CategoriaRepositorio;
 import com.lortega.birtlh.txuleta.repositorios.TxuletaRepositorio;
@@ -68,9 +66,19 @@ public class BootStrapData implements CommandLineRunner {
 
 		Categoria categoriaRutasCarpetas = new Categoria();
 		categoriaRutasCarpetas.setCategoriaDesc("RUTAS_CARPETAS");
-		categoriaRutasCarpetas.setDescripcion("Rutas Carpetas");
+		categoriaRutasCarpetas.setDescripcion("Rutas carpetas");
 		categoriaRutasCarpetas.setFechaMod(new Date());
 		
+		Categoria categoriaUsuarios = new Categoria();
+		categoriaUsuarios.setCategoriaDesc("USUARIOS");
+		categoriaUsuarios.setDescripcion("Usuarios");
+		categoriaUsuarios.setFechaMod(new Date());
+
+		Categoria categoriaBasesDatos = new Categoria();
+		categoriaBasesDatos.setCategoriaDesc("BASES_DATOS");
+		categoriaBasesDatos.setDescripcion("Bases datos");
+		categoriaBasesDatos.setFechaMod(new Date());
+
 		categoriaRepositorio.save(categoriaURLs);
 		categoriaRepositorio.save(categoriaServiciosSOA);
 		categoriaRepositorio.save(categoriaRutasCarpetas);
@@ -80,7 +88,7 @@ public class BootStrapData implements CommandLineRunner {
 	private void createTxuletas() throws Exception {
 		Txuleta txuleta = new Txuleta();
 		txuleta.setUrl("http://www.radarkapildui.com");
-		txuleta.setDescripcion("URL Radar Kapildui.com");
+		txuleta.setDescripcion("URL Radar Meteorológico de Euskalmet Kapildui.com");
 		txuleta.setFechaMod(new Date());
 	
 		//EnumCategorias enumCategorias = EnumCategorias.URLS.ordinal()
