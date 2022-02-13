@@ -25,8 +25,11 @@ public class Categoria {
 	@JoinColumn (name="txuleta_id")
 	List<Txuleta> txuletas = new ArrayList<>();
 	
-	@Enumerated(EnumType.STRING)
-	private EnumCategorias categoria;
+	//@Enumerated(EnumType.STRING)
+	//private EnumCategorias categoria;
+	
+	@Column
+	private String categoriaDesc;
 	
 	@Column
 	private String descripcion;
@@ -49,7 +52,7 @@ public class Categoria {
 	public void setTxuletas(List<Txuleta> txuletas) {
 		this.txuletas = txuletas;
 	}
-
+/*
 	public EnumCategorias getCategoria() {
 		return categoria;
 	}
@@ -57,9 +60,19 @@ public class Categoria {
 	public void setCategoria(EnumCategorias categoria) {
 		this.categoria = categoria;
 	}
-
+*/
+	
+	
 	public String getDescripcion() {
 		return descripcion;
+	}
+
+	public String getCategoriaDesc() {
+		return categoriaDesc;
+	}
+
+	public void setCategoriaDesc(String categoriaDesc) {
+		this.categoriaDesc = categoriaDesc;
 	}
 
 	public void setDescripcion(String descripcion) {

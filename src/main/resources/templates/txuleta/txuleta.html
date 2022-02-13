@@ -28,8 +28,9 @@
 			<tbody>
 				<tr th:each="txuleta : ${allTxuletas}">
 					<th scope="row" th:text="${txuleta.id}"></th>
-					<td th:text="${txuleta.categoria}"></td>
+					<td th:text="${txuleta.categoria.categoriaDesc.toString()}"></td>
 					<td th:text="${txuleta.descripcion}"></td>
+					<td th:text="${txuleta.aplicacion}"></td>
 					<td th:text="${txuleta.url}"></td>
 					<td th:text="${txuleta.rutaCarpeta}"></td>
 					<td th:text="${txuleta.maquina}"></td>

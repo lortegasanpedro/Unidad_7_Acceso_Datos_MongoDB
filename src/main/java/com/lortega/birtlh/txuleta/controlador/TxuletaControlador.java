@@ -25,9 +25,11 @@ public class TxuletaControlador {
 	@Autowired
 	private CategoriaRepositorio categoriaRepositorio;
 	
+	
 	@GetMapping ("/txuletasAll")
 	public String getTxuletas(Model modelo) {
 		modelo.addAttribute("allTxuletas", txuletaRepositorio.findAll());
+		modelo.addAttribute("opcionMenu","T");
 		return "txuleta/txuleta";
 	}
 	
@@ -43,6 +45,7 @@ public class TxuletaControlador {
 	public String initEditarTxuletaURL(@PathVariable("id") int id, Model modelo) {
 		Optional<Txuleta> txuleta = txuletaRepositorio.findById(id);
 		modelo.addAttribute("txuleta", txuleta);
+		modelo.addAttribute("opcionMenu","");
 		return "txuleta/txuletaFormURL";
 	}
 	
@@ -50,6 +53,7 @@ public class TxuletaControlador {
 	public String initNuevaTxuletaURL(Model modelo) {
 		Txuleta txuleta = new Txuleta();
 		modelo.addAttribute("txuleta", txuleta);		
+		modelo.addAttribute("opcionMenu","");
 		return "txuleta/txuletaFormURL";
 	}
 
@@ -57,6 +61,7 @@ public class TxuletaControlador {
 	public String initNuevaTxuletaCarpeta(Model modelo) {
 		Txuleta txuleta = new Txuleta();
 		modelo.addAttribute("txuleta", txuleta);		
+		modelo.addAttribute("opcionMenu","");
 		return "txuleta/txuletaFormCarpeta";
 	}
 	
@@ -65,7 +70,7 @@ public class TxuletaControlador {
 	public String addNuevaTxueletaURL(@ModelAttribute Txuleta txuleta) {
 		txuleta.setFechaMod(new Date());
 		//categoriaRepositorio.findByCategoria(EnumCategorias.RUTAS_CARPETAS);
-		txuleta.setCategoria(categoriaRepositorio.findByCategoria(EnumCategorias.RUTAS_CARPETAS));
+		txuleta.setCategoria(categoriaRepositorio.findByCategoriaDesc("RUTAS_CARPETAS"));
 		txuletaRepositorio.save(txuleta);
 		return "redirect:/txuletasAll";
 	}

@@ -57,17 +57,17 @@ public class BootStrapData implements CommandLineRunner {
 	@Transactional
 	private void createCategorias() throws Exception {
 		Categoria categoriaURLs = new Categoria();
-		categoriaURLs.setCategoria(EnumCategorias.URLS);
+		categoriaURLs.setCategoriaDesc("URLS");
 		categoriaURLs.setDescripcion("URLs");
 		categoriaURLs.setFechaMod(new Date());
 
 		Categoria categoriaServiciosSOA = new Categoria();
-		categoriaServiciosSOA.setCategoria(EnumCategorias.SERVICIOS_SOA);
+		categoriaServiciosSOA.setCategoriaDesc("SERVICIOS_SOA");
 		categoriaServiciosSOA.setDescripcion("Servisios SOA");
 		categoriaServiciosSOA.setFechaMod(new Date());
 
 		Categoria categoriaRutasCarpetas = new Categoria();
-		categoriaRutasCarpetas.setCategoria(EnumCategorias.RUTAS_CARPETAS);
+		categoriaRutasCarpetas.setCategoriaDesc("RUTAS_CARPETAS");
 		categoriaRutasCarpetas.setDescripcion("Rutas Carpetas");
 		categoriaRutasCarpetas.setFechaMod(new Date());
 		
@@ -84,7 +84,7 @@ public class BootStrapData implements CommandLineRunner {
 		txuleta.setFechaMod(new Date());
 	
 		//EnumCategorias enumCategorias = EnumCategorias.URLS.ordinal()
-		Categoria categoria = categoriaRepositorio.findByCategoria(EnumCategorias.URLS);
+		Categoria categoria = categoriaRepositorio.findByCategoriaDesc("URLS");
 		txuleta.setCategoria(categoria);
 		txuletaRepositorio.save(txuleta);
 

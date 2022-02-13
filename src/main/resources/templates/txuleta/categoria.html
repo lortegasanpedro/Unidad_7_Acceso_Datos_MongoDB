@@ -21,7 +21,7 @@
 			<tbody>
 				<tr th:each="categoria : ${allCategorias}">
 					<th scope="row" th:text="${categoria.id}"></th>
-					<td th:text="${categoria.categoria}"></td>
+					<td th:text="${categoria.categoriaDesc}"></td>
 					<td th:text="${categoria.descripcion}"></td>
 					<td th:text="${categoria.fechaMod}"></td>
 					<td>

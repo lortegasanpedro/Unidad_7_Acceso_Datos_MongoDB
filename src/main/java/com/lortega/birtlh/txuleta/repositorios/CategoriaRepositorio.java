@@ -6,5 +6,6 @@ import com.lortega.birtlh.txuleta.modelo.Categoria;
 import com.lortega.birtlh.txuleta.modelo.EnumCategorias;
 
 public interface CategoriaRepositorio extends JpaRepository<Categoria, Integer> {
-	Categoria findByCategoria(EnumCategorias enumCategorias);
+	//Categoria findByCategoria(EnumCategorias enumCategorias);
+	Categoria findByCategoriaDesc(String categoriaDesc);
 }
