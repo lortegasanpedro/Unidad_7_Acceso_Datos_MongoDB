@@ -29,12 +29,12 @@ public class BootStrapData implements CommandLineRunner {
 	@Autowired
 	private TxuletaRepositorio txuletaRepositorio;
 	
-	@Transactional
 	@Override
 	public void run(String... args) throws Exception {
 		log.info("START Txuleta");
-		
-		Categoria categoria = new Categoria();
+		this.createCategorias();
+		this.createTxuletas();
+/*		Categoria categoria = new Categoria();
 		categoria.setCategoria(EnumCategorias.URLS);
 		categoria.setDescripcion("URLs");
 		categoria.setFechaMod(new Date());
@@ -49,7 +49,7 @@ public class BootStrapData implements CommandLineRunner {
 		
 		categoriaRepositorio.save(categoria);
 		txuletaRepositorio.save(txuleta);
-		
+	*/	
 		//this.createCategorias();
 		log.info("END Txuleta");
 	}
@@ -74,5 +74,20 @@ public class BootStrapData implements CommandLineRunner {
 		categoriaRepositorio.save(categoriaURLs);
 		categoriaRepositorio.save(categoriaServiciosSOA);
 		categoriaRepositorio.save(categoriaRutasCarpetas);
+	}
+	
+	@Transactional
+	private void createTxuletas() throws Exception {
+		Txuleta txuleta = new Txuleta();
+		txuleta.setUrl("http://www.radarkapildui.com");
+		txuleta.setDescripcion("URL Radar Kapildui.com");
+		txuleta.setFechaMod(new Date());
+	
+		//EnumCategorias enumCategorias = EnumCategorias.URLS.ordinal()
+		Categoria categoria = categoriaRepositorio.findByCategoria(EnumCategorias.URLS);
+		txuleta.setCategoria(categoria);
+		txuletaRepositorio.save(txuleta);
+
+	
 	}
 }

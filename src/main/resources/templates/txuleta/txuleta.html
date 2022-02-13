@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragmentos/head ::head">
+
+</head>
+<body>
+	<div class="container">
+		<div th:replace="fragmentos/navbar ::navbar"></div>
+		<h1>Txuleta</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Categoría</th>
+					<th scope="col">Desripción</th>
+					<th scope="col">Aplicación</th>
+					<th scope="col">Url</th>
+					<th scope="col">Ruta Carpeta</th>
+					<th scope="col">Servidor</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Apellidos</th>
+					<th scope="col">Usuario</th>
+					<th scope="col">Clave</th>
+					<th scope="col">Fecha Mod</th>
+					<th scope="col"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="txuleta : ${allTxuletas}">
+					<th scope="row" th:text="${txuleta.id}"></th>
+					<td th:text="${txuleta.categoria}"></td>
+					<td th:text="${txuleta.descripcion}"></td>
+					<td th:text="${txuleta.url}"></td>
+					<td th:text="${txuleta.rutaCarpeta}"></td>
+					<td th:text="${txuleta.maquina}"></td>
+					<td th:text="${txuleta.nombre}"></td>
+					<td th:text="${txuleta.apellidos}"></td>
+					<td th:text="${txuleta.usuario}"></td>
+					<td th:text="${txuleta.clave}"></td>
+					<td th:text="${txuleta.fechaMod}"></td>
+					<td>
+						 <a class="text-decoration-none" th:href="@{txuletaEditURL/{id}(id=${txuleta.id})}"> 
+							<i class="bi bi-pencil-fill" style="font-size: 1rem; color: cornflowerblue;"></i>
+						 </a> 
+							&nbsp;
+						 <a class="text-decoration-none" th:href="@{txuletaDelete/{id}(id=${txuleta.id})}"> 
+							<i class="bi bi-x-circle-fill" style="font-size: 1rem; color: #be0032;"></i>
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		
+	</div>
+
+	<div th:replace="fragmentos/footer ::footer"></div>
+
+</body>
+</html>

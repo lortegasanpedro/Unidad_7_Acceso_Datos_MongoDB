@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragmentos/head ::head">
+
+</head>
+<body>
+	<div class="container">
+		<div th:replace="fragmentos/navbar ::navbar"></div>
+
+		<h1>Categorías</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Categoria</th>
+					<th scope="col">Descripción</th>
+					<th scope="col">Fecha Mod</th>
+					<th scope="col"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="categoria : ${allCategorias}">
+					<th scope="row" th:text="${categoria.id}"></th>
+					<td th:text="${categoria.categoria}"></td>
+					<td th:text="${categoria.descripcion}"></td>
+					<td th:text="${categoria.fechaMod}"></td>
+					<td>
+						 <a class="text-decoration-none" th:href="@{categoriaEdit/{id}(id=${categoria.id})}"> 
+							<i class="bi bi-pencil-fill" style="font-size: 1rem; color: cornflowerblue;"></i>
+						 </a> 
+							&nbsp;
+						 <a class="text-decoration-none" th:href="@{categoriaDelete/{id}(id=${categoria.id})}"> 
+							<i class="bi bi-x-circle-fill" style="font-size: 1rem; color: #be0032;"></i>
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div th:replace="fragmentos/footer ::footer"></div>
+
+</body>
+</html>

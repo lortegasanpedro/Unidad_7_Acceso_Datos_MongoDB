@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragmentos/head ::head">
+
+</head>
+<body>
+	<div class="container">
+		<div th:replace="fragmentos/navbar ::navbar"></div>
+		<h1>Editar Categoría</h1>
+
+		<form method="post" action="#" th:action="@{/categoria/new/submit}" th:object="${categoria}">
+			<input type="hidden" th:field="*{id}" id="id">
+			<div class="mb-3">
+				<label for="categoria" class="form-label">Categoría</label> 
+					<!-- <input type="text" class="form-control" th:field="*{categoria}"
+							id="categoria" aria-describedby="categoriaHelp"> -->
+				<div id="categoriaHelp" class="form-text">Categoría en Mayúsculas</div>
+			</div>
+			<div class="mb-3">
+				<label for="descripcion" class="form-label">Descripción</label>
+				<input type="text" class="form-control" th:field="*{descripcion}" 
+				       id="descripcion">
+			</div>
+			<button type="submit" class="btn btn-primary">Guardar</button>
+		</form>
+
+	</div>
+
+	<div th:replace="fragmentos/footer ::footer"></div>
+
+
+</body>
+</html>
