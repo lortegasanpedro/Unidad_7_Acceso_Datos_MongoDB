@@ -1,5 +1,6 @@
 package com.lortega.birtlh.txuleta.modelo;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -9,14 +10,24 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-public class Txuleta {
+@Table(name="txuleta")
+public class Txuleta implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1453454323426L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
+	@JsonManagedReference
 	@ManyToOne
 	@JoinColumn (name="categoria_id")
 	private Categoria categoria;
@@ -157,5 +168,7 @@ public class Txuleta {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
+	
+	
 
 }

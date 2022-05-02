@@ -1,5 +1,6 @@
 package com.lortega.birtlh.txuleta.modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -11,14 +12,24 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
-public class Categoria {
+@Table(name="categoria")
+public class Categoria implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 145345345345L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idCategoria;
 	
+	@JsonBackReference
 	@OneToMany
 	@JoinColumn (name="txuleta_id")
 	List<Txuleta> txuletas = new ArrayList<>();

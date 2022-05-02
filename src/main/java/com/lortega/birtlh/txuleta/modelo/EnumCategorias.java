@@ -1,4 +1,4 @@
-package com.lortega.birtlh.txuleta.modelo;
+/*package com.lortega.birtlh.txuleta.modelo;
 
 public enum EnumCategorias {
 
@@ -23,3 +23,4 @@ public enum EnumCategorias {
 		this.categoria= categoria;
 	}
 }
+*/

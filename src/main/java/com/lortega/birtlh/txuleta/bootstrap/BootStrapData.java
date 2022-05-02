@@ -61,7 +61,7 @@ public class BootStrapData implements CommandLineRunner {
 
 		Categoria categoriaServiciosSOA = new Categoria();
 		categoriaServiciosSOA.setCategoriaDesc("SERVICIOS_SOA");
-		categoriaServiciosSOA.setDescripcion("Servisios SOA");
+		categoriaServiciosSOA.setDescripcion("Servicios SOA");
 		categoriaServiciosSOA.setFechaMod(new Date());
 
 		Categoria categoriaRutasCarpetas = new Categoria();
