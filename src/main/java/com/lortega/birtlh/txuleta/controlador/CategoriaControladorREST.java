@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lortega.birtlh.txuleta.modelo.Categoria;
 import com.lortega.birtlh.txuleta.repositorios.CategoriaRepositorio;
-import com.lortega.birtlh.txuleta.repositorios.TxuletaRepositorio;
 
 @RestController
 @RequestMapping("api/categorias")
@@ -46,15 +45,11 @@ public class CategoriaControladorREST {
 	@ResponseStatus (HttpStatus.CREATED)
 	public Categoria update(@RequestBody Categoria categoria, @PathVariable("id") Integer id) {
 		Categoria categoriaTmp = categoriaRepositorio.findById(id).orElse(null);
-		//if (categoria!=null) {
-			categoriaTmp.setCategoriaDesc(categoria.getCategoriaDesc());
-			categoriaTmp.setDescripcion(categoria.getDescripcion());
-			Date dateTime = new Date();
-			categoriaTmp.setFechaMod(dateTime);
-			return categoriaRepositorio.save(categoriaTmp);
-		//} else {
-			//return "{
-		//}
+		categoriaTmp.setCategoriaDesc(categoria.getCategoriaDesc());
+		categoriaTmp.setDescripcion(categoria.getDescripcion());
+		Date dateTime = new Date();
+		categoriaTmp.setFechaMod(dateTime);
+		return categoriaRepositorio.save(categoriaTmp);
 	}
 
 	@DeleteMapping ("/{id}")
@@ -62,34 +57,6 @@ public class CategoriaControladorREST {
 	public void delete(@PathVariable("id") Integer id) {
 		categoriaRepositorio.deleteById(id);
 	}
-
-	
-	/*
-	@GetMapping ("/categoriaEdit/{id}")
-	public String initEditarCategoria(@PathVariable("id") int id, Model modelo) {
-		Optional<Categoria> categoria = categoriaRepositorio.findById(id);
-		modelo.addAttribute("categoria", categoria);
-		modelo.addAttribute("opcionMenu","");
-		return "txuleta/categoriaForm";
-	}
-
-	
-	@GetMapping ("/categoriaDelete/{id}")
-	public String initDeleteCategoria(@PathVariable("id") int id, Model modelo) {
-		Optional<Categoria> categoria = categoriaRepositorio.findById(id);
-		List<Txuleta> listaTxuletas = txuletaRepositorio.findByCategoria(categoria);
-		txuletaRepositorio.deleteAll(listaTxuletas);
-		categoriaRepositorio.deleteById(id);
-		return "redirect:/categoriasAll";
-	}
-	
-	@PostMapping ("categoria/new/submit")
-	public String addNuevaCategoria(@ModelAttribute Categoria categoria) {
-		categoria.setFechaMod(new Date());
-		categoriaRepositorio.save(categoria);
-		return "redirect:/categoriasAll";
-	}
-	*/	
 	
 }
 

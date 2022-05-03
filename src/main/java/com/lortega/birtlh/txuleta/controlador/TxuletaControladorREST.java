@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lortega.birtlh.txuleta.modelo.Txuleta;
-import com.lortega.birtlh.txuleta.repositorios.CategoriaRepositorio;
 import com.lortega.birtlh.txuleta.repositorios.TxuletaRepositorio;
 
 @RestController

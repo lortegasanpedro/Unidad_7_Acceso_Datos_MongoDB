@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="categoria")
@@ -29,7 +30,8 @@ public class Categoria implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idCategoria;
 	
-	@JsonBackReference
+	//@JsonManagedReference
+	//@JsonBackReference
 	@OneToMany
 	@JoinColumn (name="txuleta_id")
 	List<Txuleta> txuletas = new ArrayList<>();
@@ -61,17 +63,7 @@ public class Categoria implements Serializable {
 	public void setTxuletas(List<Txuleta> txuletas) {
 		this.txuletas = txuletas;
 	}
-/*
-	public EnumCategorias getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(EnumCategorias categoria) {
-		this.categoria = categoria;
-	}
-*/
-	
-	
+		
 	public String getDescripcion() {
 		return descripcion;
 	}
