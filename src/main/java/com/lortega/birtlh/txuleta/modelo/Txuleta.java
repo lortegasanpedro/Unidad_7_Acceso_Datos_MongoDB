@@ -1,80 +1,45 @@
 package com.lortega.birtlh.txuleta.modelo;
 
-import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@Table(name="txuleta")
-public class Txuleta implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1453454323426L;
+@Document ("txuletas")
+public class Txuleta  {
+
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	//@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private String id;
 	
-	//@JsonBackReference
-    //@JsonManagedReference
-	@ManyToOne
-	@JoinColumn (name="categoria_id")
 	private Categoria categoria;
 		
-	@Column
 	private String descripcion;
 	
-	@Column
 	private String url;
 	
-	@Column
 	private String rutaCarpeta;
 	
-	@Column
 	private String aplicacion;
 	
-	@Column
 	private String maquina;
 	
-	@Column
 	private String usuario;
 	
-	@Column
 	private String nombre;
 	
-	@Column
 	private String apellidos;
 	
-	@Column
 	private String mail;
 	
-	@Column
 	private String clave;
 	
-	@Column
 	private Date fechaMod;
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
+	
 	public String getDescripcion() {
 		return descripcion;
 	}
@@ -170,7 +135,5 @@ public class Txuleta implements Serializable {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
-	
-	
 
 }
