@@ -1,10 +1,13 @@
 package com.lortega.birtlh.txuleta.repositorios;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.lortega.birtlh.txuleta.modelo.Categoria;
 
-public interface CategoriaRepositorio extends JpaRepository<Categoria, Integer> {
+public interface CategoriaRepositorio extends MongoRepository<Categoria, String> {
 	//Categoria findByCategoria(EnumCategorias enumCategorias);
-	Categoria findByCategoriaDesc(String categoriaDesc);
+	List<Categoria> findByCategoriaDesc(String categoriaDesc);
 }

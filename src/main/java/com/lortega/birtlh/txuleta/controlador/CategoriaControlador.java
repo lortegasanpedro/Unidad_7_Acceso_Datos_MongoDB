@@ -42,7 +42,7 @@ public class CategoriaControlador {
 	}
 	
 	@GetMapping ("/categoriaEdit/{id}")
-	public String initEditarCategoria(@PathVariable("id") int id, Model modelo) {
+	public String initEditarCategoria(@PathVariable("id") String id, Model modelo) {
 		Optional<Categoria> categoria = categoriaRepositorio.findById(id);
 		modelo.addAttribute("categoria", categoria);
 		modelo.addAttribute("opcionMenu","");
@@ -51,10 +51,10 @@ public class CategoriaControlador {
 
 	
 	@GetMapping ("/categoriaDelete/{id}")
-	public String initDeleteCategoria(@PathVariable("id") int id, Model modelo) {
+	public String initDeleteCategoria(@PathVariable("id") String id, Model modelo) {
 		Optional<Categoria> categoria = categoriaRepositorio.findById(id);
-		List<Txuleta> listaTxuletas = txuletaRepositorio.findByCategoria(categoria);
-		txuletaRepositorio.deleteAll(listaTxuletas);
+		//List<Txuleta> listaTxuletas = txuletaRepositorio.findByCategoria(categoria);
+		//txuletaRepositorio.deleteAll(listaTxuletas);
 		categoriaRepositorio.deleteById(id);
 		return "redirect:/categoriasAll";
 	}

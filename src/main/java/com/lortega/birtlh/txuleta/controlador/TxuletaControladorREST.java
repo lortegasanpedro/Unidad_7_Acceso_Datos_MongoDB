@@ -32,7 +32,7 @@ public class TxuletaControladorREST {
 	}
 		
 	@GetMapping ("/{id}")
-	public Txuleta getById(@PathVariable("id") Integer id) {
+	public Txuleta getById(@PathVariable("id") String id) {
 		return  txuletaRepositorio.findById(id).orElse(null);
 	}
 
@@ -45,7 +45,7 @@ public class TxuletaControladorREST {
 	
 	@PutMapping ("/{id}")
 	@ResponseStatus (HttpStatus.CREATED)
-	public Txuleta update(@RequestBody Txuleta txuleta, @PathVariable("id") Integer id) {
+	public Txuleta update(@RequestBody Txuleta txuleta, @PathVariable("id") String id) {
 		Txuleta txuletaTmp = txuletaRepositorio.findById(id).orElse(null);
 		//if (categoria!=null) {
 			txuletaTmp.setApellidos(txuleta.getApellidos());
@@ -68,7 +68,7 @@ public class TxuletaControladorREST {
 	
 	@DeleteMapping ("/{id}")
 	@ResponseStatus (HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable("id") Integer id) {
+	public void delete(@PathVariable("id") String id) {
 		txuletaRepositorio.deleteById(id);
 	}
 

@@ -1,8 +1,9 @@
 package com.lortega.birtlh.txuleta.bootstrap;
 
 import java.util.Date;
+import java.util.List;
 
-import javax.transaction.Transactional;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,7 +53,7 @@ public class BootStrapData implements CommandLineRunner {
 		log.info("END Txuleta");
 	}
 	
-	@Transactional
+	//@Transactional
 	private void createCategorias() throws Exception {
 		Categoria categoriaURLs = new Categoria();
 		categoriaURLs.setCategoriaDesc("URLS");
@@ -84,7 +85,7 @@ public class BootStrapData implements CommandLineRunner {
 		categoriaRepositorio.save(categoriaRutasCarpetas);
 	}
 	
-	@Transactional
+	//@Transactional
 	private void createTxuletas() throws Exception {
 		Txuleta txuleta = new Txuleta();
 		txuleta.setUrl("http://www.radarkapildui.com");
@@ -92,8 +93,8 @@ public class BootStrapData implements CommandLineRunner {
 		txuleta.setFechaMod(new Date());
 	
 		//EnumCategorias enumCategorias = EnumCategorias.URLS.ordinal()
-		Categoria categoria = categoriaRepositorio.findByCategoriaDesc("URLS");
-		txuleta.setCategoria(categoria);
+		List<Categoria> listaCategorias = categoriaRepositorio.findByCategoriaDesc("URLS");
+		txuleta.setCategoria(listaCategorias.get(0));
 		txuletaRepositorio.save(txuleta);
 
 	

@@ -36,14 +36,14 @@ public class TxuletaControlador {
 	
 
 	@GetMapping ("/txuletaDelete/{id}")
-	public String deleteTxuleta(@PathVariable("id") int id, Model modelo) {
+  	public String deleteTxuleta(@PathVariable("id") String id, Model modelo) {
 		txuletaRepositorio.deleteById(id);
 		return "redirect:/txuletasAll";
 	}
 
 	
 	@GetMapping ("/txuletaEdit/{id}")
-	public String initEditarTxuletaURL(@PathVariable("id") int id, Model modelo) {
+	public String initEditarTxuletaURL(@PathVariable("id") String id, Model modelo) {
 		Optional<Txuleta> txuleta = txuletaRepositorio.findById(id);
 		List<Categoria> listCategorias = categoriaRepositorio.findAll();
 		modelo.addAttribute("allCategorias", listCategorias);

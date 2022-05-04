@@ -2,8 +2,7 @@ package com.lortega.birtlh.txuleta.modelo;
 
 import java.util.Date;
 
-import javax.persistence.Id;
-
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 

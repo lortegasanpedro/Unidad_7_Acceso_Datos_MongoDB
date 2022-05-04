@@ -30,7 +30,7 @@ public class CategoriaControladorREST {
 	}
 	
 	@GetMapping ("/{id}")
-	public Categoria getById(@PathVariable("id") Integer id) {
+	public Categoria getById(@PathVariable("id") String id) {
 		return  categoriaRepositorio.findById(id).orElse(null);
 	}
 	
@@ -43,7 +43,7 @@ public class CategoriaControladorREST {
 	
 	@PutMapping ("/{id}")
 	@ResponseStatus (HttpStatus.CREATED)
-	public Categoria update(@RequestBody Categoria categoria, @PathVariable("id") Integer id) {
+	public Categoria update(@RequestBody Categoria categoria, @PathVariable("id") String id) {
 		Categoria categoriaTmp = categoriaRepositorio.findById(id).orElse(null);
 		categoriaTmp.setCategoriaDesc(categoria.getCategoriaDesc());
 		categoriaTmp.setDescripcion(categoria.getDescripcion());
@@ -54,7 +54,7 @@ public class CategoriaControladorREST {
 
 	@DeleteMapping ("/{id}")
 	@ResponseStatus (HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable("id") Integer id) {
+	public void delete(@PathVariable("id") String id) {
 		categoriaRepositorio.deleteById(id);
 	}
 	
