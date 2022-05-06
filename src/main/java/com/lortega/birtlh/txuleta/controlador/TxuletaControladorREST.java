@@ -47,23 +47,19 @@ public class TxuletaControladorREST {
 	@ResponseStatus (HttpStatus.CREATED)
 	public Txuleta update(@RequestBody Txuleta txuleta, @PathVariable("id") String id) {
 		Txuleta txuletaTmp = txuletaRepositorio.findById(id).orElse(null);
-		//if (categoria!=null) {
-			txuletaTmp.setApellidos(txuleta.getApellidos());
-			txuletaTmp.setAplicacion(txuleta.getAplicacion());
-			txuletaTmp.setCategoria(txuleta.getCategoria());
-			txuletaTmp.setClave(txuleta.getClave());
-			txuletaTmp.setDescripcion(txuleta.getDescripcion());
-			txuletaTmp.setFechaMod(new Date());
-			txuletaTmp.setMail(txuleta.getMail());
-			txuletaTmp.setMaquina(txuleta.getMaquina());
-			txuletaTmp.setNombre(txuleta.getNombre());
-			txuletaTmp.setRutaCarpeta(txuleta.getRutaCarpeta());
-			txuletaTmp.setUrl(txuleta.getUrl());
-			txuletaTmp.setUsuario(txuleta.getUsuario());
-			return txuletaRepositorio.save(txuletaTmp);
-		//} else {
-			//return "{
-		//}
+		txuletaTmp.setApellidos(txuleta.getApellidos());
+		txuletaTmp.setAplicacion(txuleta.getAplicacion());
+		txuletaTmp.setCategoria(txuleta.getCategoria());
+		txuletaTmp.setClave(txuleta.getClave());
+		txuletaTmp.setDescripcion(txuleta.getDescripcion());
+		txuletaTmp.setFechaMod(new Date());
+		txuletaTmp.setMail(txuleta.getMail());
+		txuletaTmp.setMaquina(txuleta.getMaquina());
+		txuletaTmp.setNombre(txuleta.getNombre());
+		txuletaTmp.setRutaCarpeta(txuleta.getRutaCarpeta());
+		txuletaTmp.setUrl(txuleta.getUrl());
+		txuletaTmp.setUsuario(txuleta.getUsuario());
+		return txuletaRepositorio.save(txuletaTmp);
 	}
 	
 	@DeleteMapping ("/{id}")

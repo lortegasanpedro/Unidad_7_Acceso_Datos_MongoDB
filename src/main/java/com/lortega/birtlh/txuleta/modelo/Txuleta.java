@@ -9,9 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document ("txuletas")
 public class Txuleta  {
 
-
 	@Id
-	//@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private String id;
 	
 	private Categoria categoria;
